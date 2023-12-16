@@ -9,6 +9,7 @@ let $submitButton = document.querySelector(".submit-button");
 
 $submitButton.onclick = function (event) {
     let userInformation = getUserInformation();
+    greetUser(userInformation);
     showUserInformation(userInformation);
 
     event.preventDefault();
@@ -47,4 +48,8 @@ function showUserInformation(userInformation) {
 
     }
 
+}
+
+function greetUser(userInformation) {
+    document.querySelector(".title").textContent = `Bienvenido ${userInformation[0]}!`;
 }
