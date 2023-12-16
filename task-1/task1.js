@@ -26,6 +26,6 @@ function getAnnualSalary() {
 
 function displayMonthlySalary(monthlySalary) {
     document.querySelector(
-        ".monthly-salary"
-    ).innerText = `Salario mensual ${monthlySalary}`;
+        "#monthly-salary"
+    ).value = `Salario mensual:  ${monthlySalary}`;
 }
