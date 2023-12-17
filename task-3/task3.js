@@ -5,3 +5,10 @@
 // cada dato.
 // al apretar el botón "Calcular tiempo total", debe mostrar en un
 // <strong> pre-creado el tiempo total de los videos.
+
+let $calculateButton = document.querySelector(".calculate-button");
+$calculateButton.onclick = function (event) {
+    console.log("click");
+
+    event.preventDefault();
+};
