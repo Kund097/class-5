@@ -9,7 +9,6 @@
 let $enterButton = document.querySelector(".enter-button");
 
 $enterButton.onclick = function (event) {
-    console.log(getQuantityNumbers());
     verifiedListItem();
     createListItem(getQuantityNumbers());
     insertRandomNumber();
@@ -52,11 +51,94 @@ function clearElement(element) {
     }
 }
 
+//funciones calcular
 
 let $calculateButton = document.querySelector(".calculate-button");
 
-$calculateButton.onclick = function() {
+$calculateButton.onclick = function (event) {
 
-    
+    const arrayNumbers = getListNumbers();
+    let average = calculateAverage(arrayNumbers);
+    let lowNumber = findLowNumber(arrayNumbers);
+    let highNumber = findHighNumber(arrayNumbers);
+    let mostFrequent = findMostFrequent(arrayNumbers);
+    printResults(average,lowNumber,highNumber,mostFrequent);
+
+    event.preventDefault();
+};
+
+function getListNumbers() {
+    let $listNumbers = document.querySelectorAll(".number-list-item");
+    let arrayNumbers = [];
+
+    for (let i = 0; i < $listNumbers.length; i++) {
+        arrayNumbers.push(Number($listNumbers[i].innerText));
+    }
+
+    return arrayNumbers;
+}
+
+function calculateAverage(arrayNumbers) {
+    let accumulator = 0;
+    for (let i = 0; i < arrayNumbers.length; i++) {
+        accumulator += arrayNumbers[i];
+    }
+    return accumulator / arrayNumbers.length;
+}
+
+function findLowNumber(arrayNumbers) {
+    let lowNumber = arrayNumbers[0];
+
+    for (let i = 0; i < arrayNumbers.length; i++) {
+
+        lowNumber = arrayNumbers[i] < lowNumber 
+        ? arrayNumbers[i] : lowNumber;
+    }
+    return lowNumber;
+}
+
+function findHighNumber(arrayNumbers) {
+    let highNumber = 0;
+
+    for (let i = 0; i < arrayNumbers.length; i++) {
+
+        highNumber = arrayNumbers[i] > highNumber 
+        ? arrayNumbers[i] : highNumber;
+    }
+    return highNumber;
+}
+
+function findMostFrequent(arrayNumbers) {
+    let mostFrequent = arrayNumbers[0];
+    let highCounter = 0;
+
+    for (let i = 0; i < arrayNumbers.length; i++) {
+        let counter = 0;
+
+        for (let j = 0; j < arrayNumbers.length; j++) {
+            if (arrayNumbers[i] === arrayNumbers[j]) {
+                counter++;
+            }
+        }
+
+        if (counter > highCounter) {
+            highCounter = counter;
+            mostFrequent = arrayNumbers[i];
+        }
+    }
+    return mostFrequent;
+}
+
+function printResults(average,lowNumber,highNumber,mostFrequent) {
+
+    let $averageEm = document.querySelector(".average");
+    let $lowNumber = document.querySelector(".low-number");
+    let $highNumber = document.querySelector(".high-number");
+    let $mostFrequent = document.querySelector(".most-frequent");
+
+    $averageEm.innerText = `El promedio es: ${average}`;
+    $lowNumber.innerText = `El número más pequeño es: ${lowNumber}`;
+    $highNumber.innerText = `El número más grande es: ${highNumber}`;
+    $mostFrequent.innerText = `El número más frecuente es: ${mostFrequent}`
 
 }
