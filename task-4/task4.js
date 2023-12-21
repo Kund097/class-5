@@ -58,11 +58,11 @@ let $calculateButton = document.querySelector(".calculate-button");
 $calculateButton.onclick = function (event) {
 
     const arrayNumbers = getListNumbers();
-    let average = calculateAverage(arrayNumbers);
-    let lowNumber = findLowNumber(arrayNumbers);
+    let averageNumbers = calculateAverageNumbers(arrayNumbers);
+    let lowestNumber = findLowestNumber(arrayNumbers);
     let highNumber = findHighNumber(arrayNumbers);
     let mostFrequent = findMostFrequent(arrayNumbers);
-    printResults(average,lowNumber,highNumber,mostFrequent);
+    printResults(averageNumbers,lowestNumber,highNumber,mostFrequent);
 
     event.preventDefault();
 };
@@ -78,7 +78,7 @@ function getListNumbers() {
     return arrayNumbers;
 }
 
-function calculateAverage(arrayNumbers) {
+function calculateAverageNumbers(arrayNumbers) {
     let accumulator = 0;
     for (let i = 0; i < arrayNumbers.length; i++) {
         accumulator += arrayNumbers[i];
@@ -86,15 +86,15 @@ function calculateAverage(arrayNumbers) {
     return accumulator / arrayNumbers.length;
 }
 
-function findLowNumber(arrayNumbers) {
-    let lowNumber = arrayNumbers[0];
+function findLowestNumber(arrayNumbers) {
+    let lowestNumber = arrayNumbers[0];
 
     for (let i = 0; i < arrayNumbers.length; i++) {
 
-        lowNumber = arrayNumbers[i] < lowNumber 
-        ? arrayNumbers[i] : lowNumber;
+        lowestNumber = arrayNumbers[i] < lowestNumber 
+        ? arrayNumbers[i] : lowestNumber;
     }
-    return lowNumber;
+    return lowestNumber;
 }
 
 function findHighNumber(arrayNumbers) {
@@ -129,16 +129,16 @@ function findMostFrequent(arrayNumbers) {
     return mostFrequent;
 }
 
-function printResults(average,lowNumber,highNumber,mostFrequent) {
+function printResults(averageNumbers,lowestNumber,higherNumber,mostFrequent) {
 
-    let $averageEm = document.querySelector(".average");
-    let $lowNumber = document.querySelector(".low-number");
-    let $highNumber = document.querySelector(".high-number");
+    let $averageNumbers = document.querySelector(".average-numbers");
+    let $lowestNumber = document.querySelector(".lowest-number");
+    let $higherNumber = document.querySelector(".higher-number");
     let $mostFrequent = document.querySelector(".most-frequent");
 
-    $averageEm.innerText = `El promedio es: ${average}`;
-    $lowNumber.innerText = `El número más pequeño es: ${lowNumber}`;
-    $highNumber.innerText = `El número más grande es: ${highNumber}`;
+    $averageNumbers.innerText = `El promedio es: ${averageNumbers}`;
+    $lowestNumber.innerText = `El número más pequeño es: ${lowestNumber}`;
+    $higherNumber.innerText = `El número más grande es: ${higherNumber}`;
     $mostFrequent.innerText = `El número más frecuente es: ${mostFrequent}`
 
 }
