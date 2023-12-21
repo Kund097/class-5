@@ -131,7 +131,7 @@ function findMostFrequent(arrayNumbers) {
 
 function printResults(averageNumbers,lowestNumber,higherNumber,mostFrequent) {
 
-    let $averageNumbers = document.querySelector(".average-numbers");
+    let $averageNumbers = document.querySelector(".average");
     let $lowestNumber = document.querySelector(".lowest-number");
     let $higherNumber = document.querySelector(".higher-number");
     let $mostFrequent = document.querySelector(".most-frequent");
@@ -139,6 +139,6 @@ function printResults(averageNumbers,lowestNumber,higherNumber,mostFrequent) {
     $averageNumbers.innerText = `El promedio es: ${averageNumbers}`;
     $lowestNumber.innerText = `El número más pequeño es: ${lowestNumber}`;
     $higherNumber.innerText = `El número más grande es: ${higherNumber}`;
-    $mostFrequent.innerText = `El número más frecuente es: ${mostFrequent}`
+    $mostFrequent.innerText = `El número más frecuente es: ${mostFrequent}`;
 
 }
