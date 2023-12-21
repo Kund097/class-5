@@ -67,46 +67,69 @@ function verifiedInputs() {
 let $calculateButton = document.querySelector(".calculate-button");
 
 $calculateButton.onclick = function (event) {
-    let totalHours = getTotalHours();
-    let totalMinutes = getTotalMinutes();
-    let totalSeconds = getTotalSeconds();
+    let totalHours = calculateTotalHours(getHours());
+    let totalMinutes = getTotalMinutes(getMinutes());
+    let totalSeconds = getTotalSeconds(getSeconds());
     let totalTime = calculateTotalTime(totalHours, totalMinutes, totalSeconds);
     showTotalTime(totalTime);
     event.preventDefault();
 };
 
-function getTotalHours() {
+function getHours() {
+
+    const hours = [];
     let $hours = document.querySelectorAll(".hours");
-    let totalHours = 0;
+    convertNodeListToArrayNumber($hours,hours);
+    return hours;
+}
 
-    for (let i = 0; i < $hours.length; i++) {
-        totalHours += Number($hours[i].value);
+function getMinutes() {
+
+    const minutes = [];
+    let $minutes = document.querySelectorAll(".minutes");
+    convertNodeListToArrayNumber($minutes,minutes);
+    return minutes;
+}
+
+function getSeconds() {
+
+    const seconds = [];
+    let $seconds = document.querySelectorAll(".seconds");
+    convertNodeListToArrayNumber($seconds,seconds);
+    return seconds;
+}
+
+function convertNodeListToArrayNumber(nodeList,arrayTime){
+
+    for (let i = 0; i < nodeList.length; i++) {
+        arrayTime.push(Number(nodeList[i].value));
     }
+}
 
-    console.log(totalHours);
+function calculateTotalHours(hours) {
+    let totalHours = 0;   
+
+    for (let i = 0; i < hours.length; i++) {
+        totalHours += hours[i];
+    }
     return totalHours;
 }
 
-function getTotalMinutes() {
-    let $minutes = document.querySelectorAll(".minutes");
+function calculateTotalMinutes(minutes) {
     let totalMinutes = 0;
 
-    for (let i = 0; i < $minutes.length; i++) {
-        totalMinutes += Number($minutes[i].value);
+    for (let i = 0; i < minutes.length; i++) {
+        totalMinutes += minutes[i];
     }
-
-    console.log(totalMinutes);
     return totalMinutes;
 }
 
-function getTotalSeconds() {
-    let $seconds = document.querySelectorAll(".seconds");
+function calculateTotalSeconds(seconds) {
     let totalSeconds = 0;
 
-    for (let i = 0; i < $seconds.length; i++) {
-        totalSeconds += Number($seconds[i].value);
+    for (let i = 0; i < seconds.length; i++) {
+        totalSeconds += seconds[i];
     }
-    console.log(totalSeconds);
     return totalSeconds;
 }
 
