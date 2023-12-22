@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>tarea 2</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+
+    <h1 class="title">Bienvenido!</h1>
+
+    <form>
+        <input type="text" placeholder="Ingrese nombre" class="first-name  user-info">
+        <input type="text" placeholder="Segundo nombre" class="middle-name user-info">
+        <input type="text" placeholder="Apellido/s" class="last-name user-info">
+        <input type="number" placeholder="Edad" class="user-age user-info">
+        <button type="submit" class="submit-button">Ingresar</button>
+    </form>
+
+    <fieldset>
+        <legend>Información del usuario</legend>
+        Nombre: <input type='text' tabindex='1' disabled id="show-first-name">
+        Segundo Nombre: <input type="text" tabindex="2" disabled id="show-middle-name">
+        Apellidos: <input type='text' tabindex='3' disabled id="show-last-name">
+        Edad: <input type="text" tabindex="4" disabled id="show-age">
+    </fieldset>
+
+    <script src="task2.js"></script>
+</body>
+
+</html>
